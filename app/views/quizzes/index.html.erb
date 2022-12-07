@@ -1,12 +1,13 @@
 <div class="form-wrap" id="small-page">
   <h1 class="name1">Quiz</h1>
     <div class="in-form">
-      <div class="btn-wrap"><%= button_to "New Quiz", {controller: 'quizzes', action: 'create'}, id: "quiz-btn" %></div>
+      <div class="btn-wrap"><%= button_to "Create New Quiz", {controller: 'quizzes', action: 'create'}, id: "new-btn" %></div>
         <div>
           <% @quizzes.each do |quiz| %>
             <div id ="card-wrap">
               <div class = "quiz-list">
               <div class = "quiz-num"><%= quiz.id %></div>
+                
                 <% if quiz.user_id == current_user.id %>
                 
                 <a><%="#{quiz.score}/10点"%></a>

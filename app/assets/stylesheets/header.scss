@@ -33,26 +33,21 @@ header{
   margin-right: 6.25rem;
   min-width: 60rem;
   li{
-    width: auto;
-    height: 63px;
-    padding-right: 30px;
-    padding-left: 30px; 
-    float: right;
-    line-height: 60px;
-    letter-spacing: 1.3px;
-    position: relative; 
+    a{
+      width: auto;
+      height: 63px;
+      padding-right: 30px;
+      padding-left: 30px; 
+      float: right;
+      line-height: 60px;
+      letter-spacing: 1.3px;
+      position: relative;
+      &:hover{
+        color: rgb(68, 151, 224);
+      }
+    }
 }
-  li::after{
-    position: absolute;
-    content: '';
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0px;
-    height: 4px;
-    background-color: rgb(81, 164, 237);
-    transition-duration: 0.4s;
-}
+ 
    li:hover::after{
       width: 100%;
 }

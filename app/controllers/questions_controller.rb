@@ -1,5 +1,6 @@
+require 'csv'
 class QuestionsController < ApplicationController
-  require 'csv'
+  before_action :set_questions, only: [:edit, :update, :destroy]
 
   def index
     @tags = Tag.all.order('id ASC')
@@ -32,19 +33,16 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @question = Question.find(params[:id])
   end
 
   def update
-    @question = Question.find(params[:id])
     @question.update(question_params)
     redirect_to questions_path
   end
 
   def destroy
-    @question = Question.find(params[:id])
     @question.destroy
-    redirect_to questions_path
+    redirect_to questions_path, status: :see_other
   end
 
   def search
@@ -55,13 +53,18 @@ class QuestionsController < ApplicationController
 
   private
 
+  def set_questions
+    @question = Question.find(params[:id])
+  end
+
   def question_params
     params.require(:question).permit(:title, :mean, :image, q_similars_attributes: [:id, :similar_word, :_destroy], 
                                                             q_tags_attributes: [:id, :tag_id, :destroy]).merge(user_id: session[:user_id])
   end
 
   def send_posts_csv(questions)
-    csv_data = CSV.generate do |csv|
+    bom = "\uFEFF"
+    csv_data = CSV.generate(bom) do |csv|
       column_names = %w[Word Mean]
       csv << column_names
       questions.each do |question|

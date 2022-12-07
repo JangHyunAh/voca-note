@@ -1,7 +1,7 @@
 $main-color: rgb(68, 151, 224);
 $red-color: #ef5a5a;
 .form-wrap{
-  max-width: 80%;
+  max-width: 60%;
   margin: 0 auto;
   // border: 2px solid  rgb(68, 151, 224);
   // border-radius: 50px;
@@ -18,7 +18,10 @@ label{
   font-weight: 700;
 }
 #small-page{
-  width: 560px;
+  max-width: 560px;
+}
+#big-page{
+  min-width: 62.5rem;
 }
 #scoring-page{
   width: auto;
@@ -29,6 +32,7 @@ label{
 
 .in-form{
   width: 80%;
+  min-width: 50%;
   height: auto;
   margin: 0 auto;
   font-size: 1.25rem; 
@@ -158,6 +162,11 @@ label{
   color: main-color;
   margin-top: 1.875rem;
   font-size: .8125rem;
+  #signup-btn{
+    &:hover{
+      color: $main-color;
+    }
+  }
   // border-bottom: 1px solid rgb(58, 138, 209);
 }
 #btn-tag{ 
@@ -221,7 +230,7 @@ label{
   font-weight: 700;
 }
 
-#quiz-btn{
+#new-btn{
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -232,6 +241,8 @@ label{
   text-align: center;
   font-size: .8125rem; 
   margin: .625rem;
+  line-height: 1.875rem;
+  margin: 0 auto;
   &:hover{
     background-color: rgb(103, 186, 245);
   }
@@ -279,18 +290,7 @@ tbody{
   background-color: white;
   color: main-color;
 }
-/*Tag*/
-#tag-btn{
-  width: auto;
-  text-align: center;
-  font-size: 15px;
-  color: main-color;
-  margin: 0 auto;
-  margin-top: 40px;
-  cursor: pointer;
-  display: block;
-  margin-top: 6.25rem;
-}
+
 #index-btn{
   width: auto;
   text-align: center;
@@ -300,7 +300,11 @@ tbody{
   margin-top: 1.25rem;
   cursor: pointer;
   display: block;
+  &:hover{
+    color: $main-color;
+  }
 }
+
 #new-tag{
   text-align: center;
 }
@@ -316,20 +320,23 @@ tbody{
   border-right: none;
   border-left: none;
   height: 1.25rem;
+  text-align: center;
+  margin-right: 6.25rem;
   
 }
 .search-btn{
-  height: 1.25rem;
-  font-size: 15px;
-  float: right;
-  background-color: $main-color;
-  border-style: none;
-  color: white;
-  cursor: pointer;
-  border-radius: .3125rem;
-  margin-right: .3125rem;
-  border: 1px solid $main-color;
-  // background-image:image-url("search.png");
+  display: none;
+  // height: 100px;
+  // font-size: 15px;
+  // float: right;
+  // background-color: $main-color;
+  // border-style: none;
+  // color: white;
+  // cursor: pointer;
+  // border-radius: .3125rem;
+  // margin-right: .3125rem;
+  // border: 1px solid $main-color;
+ 
 }
 .search-btn:hover{
   background-color: white;
