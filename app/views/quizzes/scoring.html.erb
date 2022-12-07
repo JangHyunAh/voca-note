@@ -1,0 +1,51 @@
+<div class="form-wrap" id="scoring-page">
+  <div class = "name1">Quiz</div>
+    
+  <div class='in-form'>
+    <div class ="scoring-wrap">
+      <table class="scoring">
+        <thead>
+          <tr>
+            <th>no</th>
+            <th>quiz</th>
+            <th>answer</th>
+            <th>corrent or uncorrect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% i=1 %>
+          <% @lists.each do |list| %>
+          <tr>
+            <th><%= i %></th>
+            <th class = "scoring-quiz"><%=link_to " <#{Question.find(list.right_answer).title}> does mean？",quiz_list_path(@quiz.id,list.id )  %>
+            </th>
+            <th>
+              <% if list.quiz_answer == 0%>
+              <div style="color:rgb(239, 90, 90)"><%= "x" %></div>
+              <% else %>
+              <%= list.quiz_answer %>
+              <% end %>
+            </th>
+            <% if @quiz.is_propose == true %>
+            <th>
+              <%if list.right_answer == list.answer_number %>
+              <span style = "color:rgb(68, 151, 224)" ><%= "o" %></span>
+              <% else %>
+              <span style ="color:rgb(239, 90, 90)"><%= "x" %></span>
+              <% end %>
+            </th>
+          </tr>
+        <% end %>
+        <% i+=1 %>
+        </tbody>
+        <% end %>
+      </table>
+
+      <div class="scoring-footer">
+        <%= link_to 'Test',controller: 'quizzes', action: 'continue'%>
+        <%= link_to 'Stop',quizzes_path %>
+      </div>
+    </div>    
+    
+  </div>
+</div>

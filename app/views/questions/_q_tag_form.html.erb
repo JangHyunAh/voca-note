@@ -1,0 +1,4 @@
+<div>
+  <%= f.label "Tag" %>
+  <%= f.collection_select :tag_id, Tag.all, :id, :name %>
+</div>

@@ -1,0 +1,55 @@
+<div class='form-wrap' id="small-page">
+  <h1 class = "name1">Ranking</h1>  
+  
+  <div class="in-form">
+    <div class="rank-card">
+        <% if @user.quizzes.find_by(is_propose: true).present? %>
+        <div class = "rank-message-box" >
+          <h5 class = "rank-message">Good job! </h5>
+          <h5 class = "rank-message">
+            <span style="color: rgb(68, 151, 224)"><%= @user.name %></span>, Your Grade is out of <%= @list_sum %> questions, you got <%= @score_sum%> correct answer.
+            <br>
+            Your Rate is <%= sprintf("%.0f", @percentage_correct)%>％, rank is <%= @ranking %>
+            
+          </h5>
+        </div>
+        <% end %>
+    </div>
+
+          <table class = "rank-table">
+            <thead> 
+              <tr>
+                <th>Ranking</th>
+                <th>Name</th>
+                <th>Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% i = 1 %>
+              <% @users.each do |user| %>
+              <% if user.rate != nil %>
+                <% if user.id == current_user.id %>
+                  <tr style="color:red">
+                    <td><%= "#{i}位" %></td>
+                    <td> <%= user.name %></td>
+                    <td><%= "#{user.rate}%" %></td>
+                  </tr>
+                <% else %>
+                  <tr>
+                    <td><%= "#{i}位" %></td>
+                    <td> <%= user.name %></td>
+                    <td><%= "#{user.rate}%"  %></td>
+                  </tr>
+                <% end %>
+              <% i+=1 %>
+              <% end %>
+              <% end %>
+            </tbody>
+          </table>
+    <div>
+      <div>
+        <%= link_to 'Go To Quiz Lists', quizzes_path, id:"index-btn" %>
+      </div>
+    </div>
+  </div>
+</div>

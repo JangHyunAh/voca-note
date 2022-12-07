@@ -1,0 +1,38 @@
+<%= form_with model: @question do |f| %>
+      <%#= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label "Word" %>
+        <%= f.text_field :title, placeholder: "title", class: "field" %>
+        
+        <%= f.label :mean %>
+        <%= f.text_field :mean, placeholder: "mean", class: "field" %>
+        
+        <%= f.label "Photo" %>
+        <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class:"file-field" %>
+
+
+        
+          
+        <div id="detail-association-insertion-point" > 
+          <%= f.fields_for :q_similars do |q_similar| %>
+            <div>
+              <%= render 'q_similar_fields', f: q_similar %>
+            </div>
+          <% end %>
+        </div>
+       
+        <div class = "add-box">
+          <%= link_to_add_association "Add", f, :q_similars, id: 'add-btn', data: {
+        association_insertion_node: '#detail-association-insertion-point',
+        association_insertion_method: 'after' } %>
+        </div>
+        
+        <%= f.fields_for :q_tags do |q_tag| %>
+          <div>
+            <%= render 'q_tag_form', f: q_tag %>
+          </div>
+        <% end %>  
+        
+        
+        <div><%= f.submit "Save", id: "btn" %></div>
+<% end %>

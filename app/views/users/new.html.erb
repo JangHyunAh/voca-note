@@ -1,0 +1,28 @@
+<div class="form-wrap" id = "small-page">
+  <div class = "name1" >Sign up</div>
+    <div class="in-form">
+        <%= form_with(model: @user) do |f| %>
+        <%= render 'error_messages', object: f.object %>
+          <div class="form-st">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, placeholder:"Name", class: "field"  %>
+          </div>
+          <div class="form-nd">
+          <%= f.label :email %><br>
+          <%= f.email_field :email, placeholder:"Email",class: "field" %>
+          </div>
+          <div class="form-pwd">
+          <%= f.label :password %><br>
+          <%= f.password_field :password, placeholder: "Password",class: "field" %>
+          </div>
+          <div class="pwd-cf"> 
+          <%= f.label :password_confirmation, "Confirmation" %><br>
+          <%= f.password_field :password_confirmation, placeholder: "confirmation", class: "field" %>
+          </div>
+          <%= f.submit "Create my account", id: "btn" %>
+        <% end %>
+
+        <p class = "new-user">Created account? <%= link_to "Log in", login_path %></p>
+    </div>
+  </div>
+</div>

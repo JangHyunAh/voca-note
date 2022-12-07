@@ -1,0 +1,92 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$main-color: rgb(68, 151, 224);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+ul,li{
+    list-style: none;
+}
+body{
+    font-size: 14px;
+    color: #343434;
+    background-color: aliceblue;
+    margin-top:200px;
+}   
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+.container{
+  padding-top: 9.375rem;
+  width: 70rem;
+  margin: 0 auto;
+  // background-color: rgb(193, 212, 228)
+}
+
+
+// form
+#error_explanation {
+  color: rgb(251, 49, 49);
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+   ul li{
+    font-size: .8125rem;
+  }
+}
+
+.field_with_errors {
+  width: 100%;
+  // background-color: rgb(249, 176, 176);
+  .form-control {
+    color: rgb(249, 53, 53);
+    font-size: 10px;
+  }
+}
+
+/* error message */
+
+
+.alert-danger{
+  background-color: rgb(242, 207, 207);
+  font-size: .8125rem;
+  border-radius: 5px;
+  height: 2.1875rem;
+  line-height: 2.1875rem;
+  text-align: center;
+  width: 25rem;
+  color: rgb(249, 35, 35);
+  margin: 20px auto;
+}
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+  }
+}

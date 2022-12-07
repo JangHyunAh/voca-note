@@ -1,0 +1,52 @@
+<div class="form-wrap">
+  <h1 class="name1">Words</h1>
+
+  <div class="search-form">
+      <%= form_with url: questions_path, local: true, method: :get do |f| %>
+        <%= f.submit "search", class:"search-btn" %>
+        <%= f.text_field :question, class: "search-field" %>
+      <%end%>
+  </div>
+
+  <table class = "in-form">
+    <thead>
+      <tr>
+        <th>Word</th>
+        <th>Mean</th>
+        <th>Photo</th>
+        <th>Similar Words</th>
+        <th>Tag</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= question.title %></td>
+          <td><%= question.mean %></td>
+          <td>
+            <% if question.image.attached? %>
+              <%= image_tag question.display_image %>
+            <% end %>
+          </td>
+            <% question.q_similars.each do |similar| %>
+            
+          <td>
+            <%= similar.similar_word %>
+          </td>
+          <% end %>
+          <% question.tags.each do |tag|%>
+          <td>
+            <%= tag.name %>
+          </td>
+          <% end %>  
+          <% if logged_in? %>
+            <td><%= link_to "Edit", edit_question_path(question.id), id:"btn-to-edit" %></td>
+            <td><%= button_to "Delete", question_path(question.id), method: :delete, id:"btn-to-del" %></td>
+          <% end %> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div id="index-btn"><%= link_to "Print CSV", questions_path(format: :csv) %></div>
+  <div id="index-btn"><%= link_to "Create New Word", new_question_path %></div>
+</div>

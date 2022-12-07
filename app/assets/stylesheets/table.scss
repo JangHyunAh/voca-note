@@ -1,0 +1,50 @@
+$main-color: rgb(68, 151, 224);
+
+table{
+  border-collapse: collapse;
+  th, td{
+    padding: 10px;
+  }
+  th{
+    font-size: 1.0625rem;
+  }
+  tbody{
+    font-size: .9375rem;
+  }
+  thead{
+    border-bottom: 1px solid #c4c4c4;
+  }
+}
+
+
+.scoring{
+  margin: 0 auto;
+  .scoring-quiz{
+    font-size: .9375rem;
+  }
+}
+
+.scoring-footer{
+  text-align: center;
+  margin-top:20px;
+  a{
+    cursor: pointer;
+    width: 6.25rem;
+    font-weight: 700;
+    font-size: .9375rem;
+    margin: 1.25rem;
+  }
+  a:last-child{
+    color:$main-color;
+  }
+  a:hover{
+    border-bottom: 3px solid #c4c4c4;
+  }
+
+}
+
+.rank-table{
+  margin: 0 auto;
+  width: 90%;
+}
+

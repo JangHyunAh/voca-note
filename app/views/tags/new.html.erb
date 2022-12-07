@@ -1,0 +1,10 @@
+<div class="form-wrap" id="small-page">
+  <div class="in-form">
+    <div class="name1">New Tag</div>
+    <%= form_with model: @tag do |f| %>
+    <%= f.text_field :name, placeholder: "tag", class: "field" %>
+    <%= f.submit "Create", id: "btn" %>
+    <% end %>
+    <%= link_to "Go to Tag List", tags_path, id: "tag-btn" %>
+  </div>
+</div>

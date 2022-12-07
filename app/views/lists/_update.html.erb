@@ -1,0 +1,49 @@
+
+  <%= form_with model: @quiz, local: false do |f| %>
+    <div class="in-form" id = "quiz-list">
+      <h2>Test <%= list.question_number %></h2>
+        <input name="list_id" type="hidden" value="<%= list.id %>">
+        <div class = "quiz-con">
+          <div class="quiz-word">Word: <%= right_question.title %></div>
+            <div class="similar-word">Similar Word</div>
+            <div class="s-words">        
+              <% right_question.q_similars.each do |question| %>
+              <li>
+              - <%= question.similar_word %>
+              </li>
+              <%end%>
+            </div>
+            <div>
+            <%= f.radio_button :answer_number, :"1_#{choices[0].id}" %>
+            <%= f.label :answer_number,"#{choices[0].mean}", value:"1_#{choices[0].id}" %>
+            </div>
+
+            <div>
+            <%= f.radio_button :answer_number, :"2_#{choices[1].id}" %>
+            <%= f.label :answer_number, "#{choices[1].mean}",value:"2_#{choices[1].id}" %>
+            </div>
+
+            <div>
+            <%= f.radio_button :answer_number, :"3_#{choices[2].id}" %>
+            <%= f.label :answer_number, "#{choices[2].mean}",value:"3_#{choices[2].id}" %>
+            </div>
+
+          </div>
+        </div>
+
+      <div class = "quiz-footer">
+      <% if quiz.lists.where("id < ?", list.id).order("id DESC").first.present? %>
+        <%= link_to "Back", back_quiz_path(id: quiz.id, list_id: quiz.lists.where("id < ?", list.id).order("id DESC").first.id), remote: true  %>
+      <% end %>    
+      
+      <% if quiz.lists.where("id > ?", list.id).order("id ASC").first.present? %>
+        <%= f.submit "Next", id:"scoring-btn"%>
+      <% else %>
+        <%= f.submit "Scoring", id:"scoring-btn" %>
+        <%#= link_to "Scoring", scoring_quiz_path(id: quiz.id, list_id: list.id) %>
+      <% end %>
+      
+    <div><%= link_to "Go to Quiz List",quizzes_path, id:"quiz-list-btn" %></div>
+    </div>
+  </div>
+  <% end %>
