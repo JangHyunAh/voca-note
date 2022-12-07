@@ -28,12 +28,11 @@
               <%= image_tag question.display_image %>
             <% end %>
           </td>
-            <% question.q_similars.each do |similar| %>
-            
           <td>
-            <%= similar.similar_word %>
+            <% question.q_similars.each do |similar| %>
+              <li><%= similar.similar_word %></li>
+            <% end %>
           </td>
-          <% end %>
           <% question.tags.each do |tag|%>
           <td>
             <%= tag.name %>
