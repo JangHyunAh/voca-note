@@ -1,22 +1,15 @@
 class QuizzesController < ApplicationController
-  before_action :set_quiz, only: [:show, :restart, :scoring, :continue, :update, :back]
-  before_action :set_list, only: [:update, :back]
-  # before_action :set_lists, only: [:scoring]
-  # before_action :set_list_back, only: [:back, :scoring]
-  before_action :set_save_answer, only: [:update, :scoring]
-  # before_action :set_list_quiz, only: [:show, :update, :back, :scoring]
+  before_action :set_quiz, only: [:show, :restart, :scoring, :continue, :update, :back, :destroy]
+  before_action :set_list, only: [:update, :back, :scoring]
+  before_action :set_save_answer, only: [:update]
  
   def index
-    @quizzes = Quiz.page(params[:page]).per(7).order('id ASC')
+    @quizzes = Quiz.page(params[:page]).per(7).order('id DESC')
     # @user = current_user
   end
   
   def show
     @lists = @quiz.lists.order(question_number: 'ASC')
-    
-    # @list = List.find(params[:id])   
-    # @right_question = @list.questions.find(@list.right_answer)
-    # @choices = @list.questions.shuffle    
   end
 
   def create
@@ -76,8 +69,10 @@ class QuizzesController < ApplicationController
         @quiz.update(score: @quiz.score += 1) if list.right_answer == list.answer_number
       end
     end
+
     @quiz.update(is_propose: true)
-    redirect_back fallback_location: scoring_quiz_path(@quiz.id)
+    list = @quiz.lists.find_by(quiz_answer: 0)
+    redirect_to quiz_list_path(quiz_id: @quiz.id, id: list.id)
   end
 
 
@@ -98,7 +93,7 @@ class QuizzesController < ApplicationController
   end
 
   def destroy
-    @quiz.destroy
+    error = @quiz.destroy
     redirect_to quizzes_path
   end
 
@@ -131,7 +126,9 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
   end
 
-  def set_list
+  def set_list 
+    p 123456789
+    p params
     @list = List.find(params[:list_id])
   end
 

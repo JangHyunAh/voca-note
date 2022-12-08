@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :tags
-  resources :questions
-
+  resources :questions 
+  
   resources :quizzes, only: [:index, :new, :create, :show, :update, :destroy] do
     member do
       get "restart"

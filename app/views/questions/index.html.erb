@@ -5,7 +5,7 @@
   <div class="search-form">
       <%= form_with url: questions_path, local: true, method: :get do |f| %>
         <%= f.submit class:"search-btn" %>
-        <%= f.text_field :question, placeholder: "Search", class: "search-field" %>
+        <%= f.search_field :search, placeholder: "Search", class: "search-field" %>
       <%end%>
   </div>
 
@@ -18,39 +18,40 @@
         <th>Photo</th>
         <th style="width:200px;">Similar Words</th>
         <th>Tag</th> 
-        <th colspan="2">Option</th>
       </tr>
     </thead>
     <tbody class = "words-tags-table">
-      <% @questions.each do |question| %>
-        <tr>
-          <td style="color:rgb(68, 151, 224); font-weight:700;"><%= question.id %></td>
-          <td style ="font-weight:700"><%= question.title %></td>
-          <td><%= question.mean %></td>
-          <td> 
-              <% if question.image.attached? %>
-                <%= image_tag question.display_image %>
+        <% @questions.each do |question| %>
+          <tr>
+            <td style="color:rgb(68, 151, 224); font-weight:700;"><%= question.id %></td>
+            <td style ="font-weight:700"><%= question.title %></td>
+            <td><%= question.mean %></td>
+            <td> 
+                <% if question.image.attached? %>
+                  <%= image_tag question.display_image %>
+                <% end %>
+            </td>
+            <td>
+              <% question.q_similars.each do |similar| %>
+                <li><%= similar.similar_word %></li>
               <% end %>
-           
-          </td>
-          <td>
-            <% question.q_similars.each do |similar| %>
-              <li style="text-align:left"><%= similar.similar_word %></li>
-            <% end %>
-          </td>
-          <% question.tags.each do |tag|%>
-          <td>
-            <%= tag.name %>
-          </td>
-          <% end %>  
-          <% if logged_in? %>
-            <td style="width:100px;"><%= link_to "Edit", edit_question_path(question.id), id:"btn-to-edit" %></td>
-            <td style="width:100px;"><%= button_to "Delete", question_path(question.id), method: :delete, id:"btn-to-del" %></td>
-          <% end %> 
-        </tr>
-      <% end %>
+            </td>
+            <% question.tags.each do |tag|%>
+            <td>
+              <%= tag.name %>
+            </td>
+            <% end %>  
+            <% if current_user.id == question.user_id %>
+              <td style="width:100px;"><%= link_to "Edit", edit_question_path(question.id), id:"btn-to-edit" %></td>
+              <td style="width:100px;"><%= button_to "Delete", question_path(question.id), method: :delete, id:"btn-to-del" %></td>
+            <% end %> 
+          </tr>
+        <% end %> 
     </tbody>
   </table>
-  <div id="index-btn"><%= link_to "Print CSV", questions_path(format: :csv) %></div>
-  <div id="index-btn"><%= link_to "Create New Word", new_question_path %></div>
+    <div id="index-btn"><%= link_to "Print CSV", questions_path(format: :csv) %></div>
+    <div id="paginate-wrap">
+      <%= paginate @questions %>
+    </div>
+    
 </div>

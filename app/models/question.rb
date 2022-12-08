@@ -5,7 +5,7 @@ class Question < ApplicationRecord
   has_one_attached :image
   has_many :q_similars, dependent: :destroy
   has_many :question_lists, dependent: :destroy
-  has_many :lists, through: :question_lists
+  has_many :lists, through: :question_lists, dependent: :destroy
   
   accepts_nested_attributes_for :q_similars, allow_destroy: true
   accepts_nested_attributes_for :q_tags, allow_destroy: true
@@ -15,5 +15,9 @@ class Question < ApplicationRecord
 
   def display_image
     image.variant(resize_to_limit: [100,100])
+  end
+
+  def self.search(question)
+    where(["title like? OR mean like?", "%#{keyword}%", "%#{keyword}%"])
   end
 end

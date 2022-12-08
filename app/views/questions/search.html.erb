@@ -1,0 +1,59 @@
+<div class="form-wrap" id="big-page">
+  <h1 class="name1">Words</h1>
+  <div id="new-btn"><%= link_to "Create New Word", new_question_path %></div>
+
+  <div class="search-form">
+      <%= form_with url: search_questions_path, local: true, method: :get do |f| %>
+        <%= f.submit class:"search-btn" %>
+        <%= f.text_field :word, placeholder: "Search", class: "search-field" %>
+        <%= f.select :search, options_for_select([["word"],["mean"],["tag"]]), class: "tag-select"%>
+      <%end%>
+  </div>
+
+  <table class = "in-form">
+    <thead>
+      <tr>
+        <th>no</th>
+        <th>Word</th>
+        <th>Mean</th>
+        <th>Photo</th>
+        <th style="width:200px;">Similar Words</th>
+        <th>Tag</th> 
+      </tr>
+    </thead>
+    <tbody class = "words-tags-table">
+      <% @questions.each do |question| %>
+        <tr>
+          <td style="color:rgb(68, 151, 224); font-weight:700;"><%= question.id %></td>
+          <td style ="font-weight:700"><%= question.title %></td>
+          <td><%= question.mean %></td>
+          <td> 
+              <% if question.image.attached? %>
+                <%= image_tag question.display_image %>
+              <% end %>
+           
+          </td>
+          <td>
+            <% question.q_similars.each do |similar| %>
+              <li><%= similar.similar_word %></li>
+            <% end %>
+          </td>
+          <% question.tags.each do |tag|%>
+          <td>
+            <%= tag.name %>
+          </td>
+          <% end %>  
+          <% if current_user.id == question.user_id %>
+            <td style="width:100px;"><%= link_to "Edit", edit_question_path(question.id), id:"btn-to-edit" %></td>
+            <td style="width:100px;"><%= button_to "Delete", question_path(question.id), method: :delete, id:"btn-to-del" %></td>
+          <% end %> 
+        </tr>
+      <% end %>   
+    </tbody>
+  </table>
+    <div id="index-btn"><%= link_to "Print CSV", questions_path(format: :csv) %></div>
+    <div id="paginate-wrap">
+      <%= paginate @questions %>
+    </div>
+    
+</div>

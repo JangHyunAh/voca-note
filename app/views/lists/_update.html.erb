@@ -4,14 +4,16 @@
       <h2>Test <%= list.question_number %></h2>
         <input name="list_id" type="hidden" value="<%= list.id %>">
         <div class = "quiz-con">
-          <div class="quiz-word">Word: <%= right_question.title %></div>
-            <div class="similar-word">Similar Word</div>
-            <div class="s-words">        
-              <% right_question.q_similars.each do |question| %>
-              <li>
-              - <%= question.similar_word %>
-              </li>
-              <%end%>
+          <div class="quiz-con-wrap">  
+            <div class="quiz-word">Word: <%= right_question.title %></div>
+              <div class="similar-word">Similar Word</div>
+              <div class="s-words">      
+                <% right_question.q_similars.each do |question| %>
+                <li>
+                  <%= question.similar_word %>
+                </li>
+                <%end%>
+              </div>
             </div>
             <div>
             <%= f.radio_button :answer_number, :"1_#{choices[0].id}" %>

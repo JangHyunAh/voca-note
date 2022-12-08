@@ -1,12 +1,17 @@
 require 'csv'
 class QuestionsController < ApplicationController
-  before_action :set_questions, only: [:edit, :update, :destroy]
+  before_action :set_questions, only: [:edit, :update, :destroy, :search]
 
   def index
     @tags = Tag.all.order('id ASC')
     @tag_id = params[:tag]
-    @questions = Question.all
-    @questions = @questions.where('title LIKE ?', "%#{params[:question]}%") if params[:question].present?
+    @questions = Question.page(params[:page]).per(5).order('id ASC')
+    # @questions = Question.all.order('id ASC')
+    @questions = @questions.where('title LIKE ? ', "%#{params[:search]}%").
+                 or(@questions.where('mean LIKE ? ', "%#{params[:search]}%")) if params[:search].present?
+    p 123456
+    p params[:search]
+
     respond_to do |format|
       format.html
       format.csv do |csv|
@@ -44,11 +49,6 @@ class QuestionsController < ApplicationController
     @question.destroy
     redirect_to questions_path, status: :see_other
   end
-
-  def search
-    @tags = Tag.all
-  end
-
 
 
   private

@@ -49,22 +49,29 @@ label{
     font-size: 20px;
   }
   .quiz-word{
-    color: $main-color;
+    color: rgb(0, 119, 255);
     font-weight: 700;
     margin-bottom: 1.25rem;
+    text-align: center;
   }
   .similar-word{
-    margin-right:20px;
-    font-size: 18px;
-    font-weight: 700;
+    margin: 10px auto;
+    font-size: 17px;
+    font-weight: 700; 
+    text-align: center;
+    color: #484848
   }
   .s-words{
-   font-size: .9375rem;
-    li:last-child{
-      border-bottom: 1px solid #ccc;
-    }
+    font-weight: 700;
+    font-size: .875rem;
+    text-align: center; 
+    color: #484848
   }
-  
+}
+.quiz-con-wrap{
+  background-color: #add3fa4d;
+  padding: .625rem;
+  border-radius: .3125rem;
 }
 
 .name1{
@@ -313,6 +320,10 @@ tbody{
 .search-form{
   margin-right: 1.875rem;
   height: 3.125rem;
+  #search{
+    float:right;
+  }
+
 }
 .search-field{
   float: right;
@@ -321,8 +332,7 @@ tbody{
   border-left: none;
   height: 1.25rem;
   text-align: center;
-  margin-right: 6.25rem;
-  
+  box-sizing: border-box;
 }
 .search-btn{
   display: none;
@@ -381,26 +391,26 @@ a{
 
 #card-wrap{
   width: 26.25rem;
-  margin: 0 auto;
-  
-  .quiz-list{
-    font-size: 15px;
+  margin: 0 auto; 
+  .quiz-con{
+    font-size: 13px;
     font-weight: 700;
     width: 100%;
     height: 3.125rem;
-    background-color: rgba(103, 186, 245, 0.353);
-    color: $main-color;
+    background-color: #add3fa4d;
+    color:rgb(11, 125, 255);
     border-radius: .3125rem;
     line-height: 3.125rem;
     margin-top: .625rem;
     #quiz-option{
       float: left;
       &:hover{
-        border-bottom: 3px solid white;
+        border-bottom: 2px solid white;
       }
     }
   }
 }
+
 
 .rank-message{
   margin-bottom: .625rem;
@@ -411,14 +421,19 @@ a{
   // border: 1px solid #c4c4c4;
   margin-bottom: 1.875rem
 }
-.paginate{
+#paginate-wrap{
+  margin: 0 auto;
+}
+.pagination{
   margin-top: 1.875rem;
   font-size: .875rem;
-  text-align: center;
+  float: right;
+  li{
+    float: left;
+    margin: 0 auto;
+  }
 }
-.pagination>li{
-  float: left;
-}
+
 .pagination>li>a {          
   border: none;     /*枠線をなくす*/
   color: #696969;   /*文字の色を変える*/
@@ -427,8 +442,9 @@ a{
 
 /* 表示しているページ番号のデザイン */
 .pagination>.active>a {     
-  background: #93c9ff;     /*背景の色を変える*/
-  border-radius: 2px;     /*角を丸くする*/
+  color: #93c9ff;     /*背景の色を変える*/
+  font-weight: 700;
+  border-bottom: 1px solid #c4c4c4;     /*角を丸くする*/
 }
 
 /*ホバー時のデザイン*/

@@ -21,7 +21,7 @@
             </th>
             <th>
               <% if list.quiz_answer == 0 %>
-              <div id="unanswered"><%= "Unanswered" %></div>
+              <div id="unanswered"><%= "x" %></div>
               <% else %>
               <%= list.quiz_answer %>
               <% end %>
@@ -29,9 +29,9 @@
             <% if @quiz.is_propose == true %>
             <th>
               <%if list.right_answer == list.answer_number %>
-              <div class="correct"><%= "correct" %></div>
+              <div class="correct"><%= "o" %></div>
               <% else %>
-              <div class="uncorrect"><%= "uncorrect" %></div>
+              <div class="uncorrect"><%= "x" %></div>
               <% end %>
             </th>
           </tr>

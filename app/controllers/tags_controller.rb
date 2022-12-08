@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   # before_action :logged_in_user,  only: [:index, :edit, :update]
-  before_action :set_tag,         only: [:edit, :update, :destroy]
+  before_action :set_tag,         only: [:edit, :update, :destroy, :search]
   # before_action :correct_user,    only: [:edit, :destroy]
   
   def index
@@ -14,7 +14,6 @@ class TagsController < ApplicationController
 
   def show
   end
- 
 
   def create
     @tag = Tag.new(tag_params)

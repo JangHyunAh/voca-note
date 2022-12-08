@@ -1,32 +1,36 @@
 <div class="form-wrap" id="small-page">
   <h1 class="name1">Quiz</h1>
     <div class="in-form">
-      <div class="btn-wrap"><%= button_to "Create New Quiz", {controller: 'quizzes', action: 'create'}, id: "new-btn" %></div>
-        <div>
-          <% @quizzes.each do |quiz| %>
-            <div id ="card-wrap">
-              <div class = "quiz-list">
-              <div class = "quiz-num"><%= quiz.id %></div>
-                
-                <% if quiz.user_id == current_user.id %>
-                
-                <a><%="#{quiz.score}/10点"%></a>
-                <%= link_to "ReTry",restart_quiz_path(quiz.id), id:"quiz-option" %>
-                  <% if quiz.is_propose == true %>
-                    <%= link_to "get an answer",quiz_path(quiz.id),id:"quiz-option" %>
-                  <% else %>
-                    <%= link_to "continue", scoring_quiz_path(quiz.id),id:"quiz-option" %>
-                  <% end %>
-                <%end%>
-              </div>
-            </div>
-          <% end %>
-          <div class = "paginate">
-            <%= paginate @quizzes %>
-          </div>
-        </div>
-    </div>
-    <div id="index-btn"><%= link_to "Go To Ranking", rankings_path %></div>
+      <div class="btn-wrap"><%= button_to "Create New Quiz", {controller: 'quizzes', action: 'create'}, id: "new-btn" %></div>  
+        <% @quizzes.each do |quiz| %>
+          <% if quiz.user_id == current_user.id %>
 
+            <div id ="card-wrap">          
+                <div class = "quiz-con">
+                  
+                      <div class = "quiz-num"><%= quiz.id %></div>
+                      
+                      <a><%="#{quiz.score}/10点"%></a>
+                      
+                      <%= link_to "ReTry",restart_quiz_path(quiz.id), id:"quiz-option" %>
+                      <%= link_to "Delete",quiz, data: { "turbo-method": :delete }, id:"quiz-option" %>
+                        
+                      <% if quiz.lists.where(quiz_answer:0).blank? %>
+                        <%= link_to "get an answer",quiz_path(quiz.id),id:"quiz-option" %>
+                      <% else %>
+                        <%= link_to "continue", continue_quiz_path(quiz.id),id:"quiz-option" %>
+                      <% end %>
+                  
+                </div>
+            </div> 
+          <% end %>
+        <% end %>
+      
+          <%= paginate @quizzes %>
+        
+            
+      </div>       
+    <div id="index-btn"><%= link_to "Go To Ranking", rankings_path %></div>
+  </div>
 </div>
 
