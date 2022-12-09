@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_08_005421) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_09_062428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,8 +96,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_005421) do
     t.boolean "is_propose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "list_id"
-    t.index ["list_id"], name: "index_quizzes_on_list_id"
     t.index ["user_id"], name: "index_quizzes_on_user_id"
   end
 
@@ -131,7 +129,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_005421) do
   add_foreign_key "question_lists", "lists"
   add_foreign_key "question_lists", "questions"
   add_foreign_key "questions", "users"
-  add_foreign_key "quizzes", "lists"
   add_foreign_key "quizzes", "users"
   add_foreign_key "tags", "users"
 end

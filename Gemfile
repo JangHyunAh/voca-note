@@ -82,4 +82,4 @@ gem "jquery-rails"
 gem "kaminari"
 gem "requestjs-rails"
 gem "bootstrap-sass"
-gem 'sass-rails'
+gem "sass-rails"
