@@ -1,8 +1,9 @@
 <div class="form-wrap" id="big-page">
   <h1 class="name1">Words</h1>
   <div class = "in-form">
-  <div id="new-btn"><%= link_to "Create New Word", new_question_path %></div>
-
+  <%# <% if logged_in? %> 
+    <div id="new-btn"><%= link_to "Create New Word", new_question_path %></div>
+  <%# <% end %> 
   <%= form_with url: questions_path, local: true, method: :get do |f| %>
   
   

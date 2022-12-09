@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   def index
     @tags = Tag.all.order('id ASC')
     @tag_id = params[:tag]
-    @questions = Question.page(params[:page]).per(5).order('id ASC')
+    @questions = Question.page(params[:page]).per(7).order('id ASC')
     # @questions = Question.all.order('id ASC')
     @questions = @questions.where('title LIKE ? ', "%#{params[:search]}%").
                  or(@questions.where('mean LIKE ? ', "%#{params[:search]}%")) if params[:search].present?
