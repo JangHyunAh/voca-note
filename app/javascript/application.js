@@ -8,3 +8,4 @@ import "./cocoon"; //cocoon追加
 //= require jquery_ujs
 //= require_tree .
 import "@rails/request.js"
+

@@ -1,25 +1,25 @@
 <div class="form-wrap" id = "small-page">
+    <div class = "in-form">
     <h1 class="name1">Tags</h1>
-    
-    <div class="search-form">
-      <%= form_with url: tags_path, local: true, method: :get do |f| %>
-        <%= f.submit class: "search-btn"%>
-        <%= f.text_field :tag, class: "search-field", placeholder: "Search" %>
-      <%end%>
-    </div>
 
-    <table class = "in-form">   
+    <table>   
       <thead>
         <tr>
           <th>no</th>
           <th colspan = "3">tag</th>
+          <div class="search-form">          
+            <%= form_with url: tags_path, local: true, method: :get do |f| %>
+              <%= f.submit "search", class: "search-btn"%>
+              <%= f.text_field :tag, class: "search-field", placeholder: "Search" %>
+            <%end%>
+          </div> 
 
         </tr>
       </thead>
       <tbody class = "words-tags-table">
       <% @tags.each do |t| %>
         <tr>
-          <td><%= t.id%></td>
+          <td style = "color:rgb(68, 151, 224); font-weight:700"><%= t.id%></td>
           <td><%= t.name %></td>
           <% if logged_in? %>
             <% if current_user.id == t.user_id %>
@@ -31,6 +31,9 @@
       <% end %>
       </tbody>
     </table>
-    <%= link_to "Create New Tag", new_tag_path, id:"index-btn" %>
+    </div>
+    <% if logged_in? %>
+      <%= link_to "Create New Tag", new_tag_path, id:"index-btn" %>
+    <% end %>
   </div>
 </div>

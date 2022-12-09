@@ -1,15 +1,12 @@
 <div class="form-wrap" id="big-page">
   <h1 class="name1">Words</h1>
+  <div class = "in-form">
   <div id="new-btn"><%= link_to "Create New Word", new_question_path %></div>
 
-  <div class="search-form">
-      <%= form_with url: questions_path, local: true, method: :get do |f| %>
-        <%= f.submit class:"search-btn" %>
-        <%= f.search_field :search, placeholder: "Search", class: "search-field" %>
-      <%end%>
-  </div>
-
-  <table class = "in-form">
+  <%= form_with url: questions_path, local: true, method: :get do |f| %>
+  
+  
+  <table>
     <thead>
       <tr>
         <th>no</th>
@@ -17,9 +14,19 @@
         <th>Mean</th>
         <th>Photo</th>
         <th style="width:200px;">Similar Words</th>
-        <th>Tag</th> 
+        <th>
+          Tag
+          <%# <%= f.collection_select :tag_id, Tag.all, :id, :name %> 
+        </th>
+        
+          <div class="search-form">
+            <%= f.submit "search",class:"search-btn" %>
+            <%= f.search_field :search, placeholder: "Search", class: "search-field" %>
+          </div>
+        
       </tr>
     </thead>
+    <% end %>
     <tbody class = "words-tags-table">
         <% @questions.each do |question| %>
           <tr>
@@ -40,10 +47,12 @@
             <td>
               <%= tag.name %>
             </td>
-            <% end %>  
-            <% if current_user.id == question.user_id %>
-              <td style="width:100px;"><%= link_to "Edit", edit_question_path(question.id), id:"btn-to-edit" %></td>
-              <td style="width:100px;"><%= button_to "Delete", question_path(question.id), method: :delete, id:"btn-to-del" %></td>
+            <% end %>
+            <% if logged_in? %>  
+              <% if current_user.id == question.user_id %>
+                <td style="width:100px;"><%= link_to "Edit", edit_question_path(question.id), id:"btn-to-edit" %></td>
+                <td style="width:100px;"><%= button_to "Delete", question_path(question.id), method: :delete, id:"btn-to-del" %></td>
+              <% end %> 
             <% end %> 
           </tr>
         <% end %> 
@@ -53,5 +62,7 @@
     <div id="paginate-wrap">
       <%= paginate @questions %>
     </div>
+  </div>
+    
     
 </div>

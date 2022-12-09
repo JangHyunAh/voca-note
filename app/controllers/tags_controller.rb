@@ -22,6 +22,7 @@ class TagsController < ApplicationController
     else
       render 'new', status: :unprocessable_entity
     end
+   
   end
 
   def edit
@@ -49,7 +50,6 @@ class TagsController < ApplicationController
   end
 
   # def correct_user
-  #   @user = User.find(params[:user_id])
   #   redirect_to(tags_path, status: :see_other) unless @tag.user.id == current_user.id
   # end
 

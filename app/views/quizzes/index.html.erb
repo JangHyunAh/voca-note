@@ -13,7 +13,7 @@
                       <a><%="#{quiz.score}/10点"%></a>
                       
                       <%= link_to "ReTry",restart_quiz_path(quiz.id), id:"quiz-option" %>
-                      <%= link_to "Delete",quiz, data: { "turbo-method": :delete }, id:"quiz-option" %>
+                      <%= link_to "Delete", quiz, data: { "turbo-method": :delete }, id:"quiz-option" %>
                         
                       <% if quiz.lists.where(quiz_answer:0).blank? %>
                         <%= link_to "get an answer",quiz_path(quiz.id),id:"quiz-option" %>
@@ -25,12 +25,11 @@
             </div> 
           <% end %>
         <% end %>
-      
-          <%= paginate @quizzes %>
-        
-            
+          <%= link_to "Go To Ranking", rankings_path, id:"index-btn" %>
+
+          <%= paginate @quizzes %>     
+
       </div>       
-    <div id="index-btn"><%= link_to "Go To Ranking", rankings_path %></div>
   </div>
 </div>
 

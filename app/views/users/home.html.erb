@@ -1,13 +1,13 @@
 
 <% if logged_in? %>
   <div class="home-wrap">
-    <h1>Welcome to the Voca Note</h1>
-    <div class = "home-btn"><%= link_to "Start Voca Note", "#" %></div>
+    <h1>Welcome to Voca Note</h1>
+    <%= link_to "Start Voca Note", quizzes_path, class:"home-btn" %>
   </div>
 
 <% else %>  
-  <div class="home-wrap">
-    <h1>Welcome to the Voca Note</h1>
+  <div class="home-wrap" >
+    <h1>Welcome to Voca Note</h1>
     <div class = "home-btn"><%= link_to "Sign up now!", signup_path %></div>
   </div>
 

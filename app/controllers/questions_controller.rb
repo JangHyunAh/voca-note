@@ -9,8 +9,7 @@ class QuestionsController < ApplicationController
     # @questions = Question.all.order('id ASC')
     @questions = @questions.where('title LIKE ? ', "%#{params[:search]}%").
                  or(@questions.where('mean LIKE ? ', "%#{params[:search]}%")) if params[:search].present?
-    p 123456
-    p params[:search]
+   
 
     respond_to do |format|
       format.html

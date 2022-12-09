@@ -5,11 +5,11 @@
     <div class="rank-card">
         <% if @user.quizzes.find_by(is_propose: true).present? %>
         <div class = "rank-message-box" >
-          <h5 class = "rank-message">Good job! </h5>
+          <h5 class = "rank-message">Good job, <span style="color: rgb(68, 151, 224)"><%= @user.name %></span>!</h5>
           <h5 class = "rank-message">
-            <span style="color: rgb(68, 151, 224)"><%= @user.name %></span>, Your Grade is out of <%= @list_sum %> questions, you got <%= @score_sum%> correct answer.
+            Your Grade is out of <%= @list_sum %> questions, you got <%= @score_sum%> correct answer.
             <br>
-            Your Rate is <%= sprintf("%.0f", @percentage_correct)%>％, rank is <%= @ranking %>
+            Your Rate is <%= sprintf("%.0f", @percentage_correct)%>％, rank is "<span style="color: orange"><%= @ranking %></span>"
             
           </h5>
         </div>

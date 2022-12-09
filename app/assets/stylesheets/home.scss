@@ -1,26 +1,26 @@
 .home-wrap{
   text-align: center;
-  width: 100%;
+  width: 50%;
   height: 31.25rem;
-  background-color: aliceblue;
+  background-color: white;
   border-radius: 20px;
+  margin: 0 auto;
   h1{
-    padding-top:100px;
+    padding: 7.5rem;
+    margin:0 auto;
     font-size: 60px;
   }
-  .home-btn{
+  a{
     cursor: pointer;
-    width: 12.5rem;
-    height: 3.125rem;
+    padding: .625rem;
     line-height: 3.125rem;
-    margin: 6.25rem auto;
     font-size: 1.25rem;
     font-weight: 700;
-    border-radius: 50px;
+    border-radius: 10px;
     background-color:rgb(68, 151, 224);
     color: white;
-  }
-  .home-btn:hover{
-    background-color: rgb(58, 138, 209);
+    &:hover{
+       background-color: rgb(90, 188, 230);
+    }
   }
 }
