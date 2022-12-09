@@ -93,7 +93,9 @@ class QuizzesController < ApplicationController
   end
 
   def destroy
-    error = @quiz.destroy
+    p 01234567
+    p error = @quiz.destroy
+    p 1234567
     redirect_to quizzes_path
   end
 

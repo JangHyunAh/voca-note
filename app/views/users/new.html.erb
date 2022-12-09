@@ -1,5 +1,5 @@
 <div class="form-wrap" id = "small-page">
-  <div class = "name1" >Sign up</div>
+  <h1 class = "name1" >Sign up</h1>
     <div class="in-form">
         <%= form_with(model: @user) do |f| %>
         <%= render 'error_messages', object: f.object %>
@@ -21,8 +21,7 @@
           </div>
           <%= f.submit "Create my account", id: "btn" %>
         <% end %>
-
-        <p class = "new-user">Created account? <%= link_to "Log in", login_path %></p>
+        <%= link_to "Created account? Go to Log in", login_path, id:"index-btn"%>
     </div>
   </div>
 </div>

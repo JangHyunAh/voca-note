@@ -32,7 +32,8 @@ body{
   height: 100%;
   font-size: 14px;
   color: #343434;
-  background-color: aliceblue;
+  background: rgb(181,248,255);
+  background: radial-gradient(circle, rgba(181,248,255,0.5452556022408963) 0%, rgba(190,210,255,0.5704656862745099) 100%);
   margin-top:150px;
 }   
 h1, h2, h3, h4, h5, h6 {

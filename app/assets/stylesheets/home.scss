@@ -3,8 +3,10 @@
   width: 50%;
   height: 31.25rem;
   background-color: white;
-  border-radius: 20px;
   margin: 0 auto;
+  -webkit-box-shadow: 10px 0px 18px 0px rgba(46,46,46,0.27);
+  -moz-box-shadow: 10px 0px 18px 0px rgba(46,46,46,0.27);
+  box-shadow: 10px 0px 18px 0px rgba(46,46,46,0.27);
   h1{
     padding: 7.5rem;
     margin:0 auto;
@@ -12,11 +14,11 @@
   }
   a{
     cursor: pointer;
-    padding: .625rem;
+    padding: .9375rem;
     line-height: 3.125rem;
     font-size: 1.25rem;
     font-weight: 700;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color:rgb(68, 151, 224);
     color: white;
     &:hover{
