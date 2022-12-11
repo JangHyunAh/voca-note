@@ -20,6 +20,7 @@ class TagsController < ApplicationController
     if @tag.save
       redirect_to tags_path
     else
+      flash[:info] = "It's not saved"
       render 'new', status: :unprocessable_entity
     end
    

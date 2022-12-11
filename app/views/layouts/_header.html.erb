@@ -5,13 +5,14 @@
                 <% if logged_in? %>
                   <li><%= link_to "Log out", logout_path, data: {"turbo-method": :delete} %></li>   
                   <li><%= link_to "Quiz", quizzes_path %></li>
+                  <li><%= link_to "Words", questions_path %></li>
+                  <li><%= link_to "Tags", tags_path %></li>    
                 <% else %>
                   <li><%= link_to "Log in", login_path %></li>
                   <li><%= link_to "Sign up", signup_path %></li>
                 <% end %>
                 
-                <li><%= link_to "Words", questions_path %></li>
-                <li><%= link_to "Tags", tags_path %></li>    
+                
               </ul>
         </div>
 </header>

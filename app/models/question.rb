@@ -5,7 +5,7 @@ class Question < ApplicationRecord
   has_one_attached :image
   has_many :q_similars, dependent: :destroy
   has_many :question_lists, dependent: :destroy
-  has_many :lists, through: :question_lists, dependent: :destroy
+  has_many :lists, through: :question_lists
   
   accepts_nested_attributes_for :q_similars, allow_destroy: true
   accepts_nested_attributes_for :q_tags, allow_destroy: true

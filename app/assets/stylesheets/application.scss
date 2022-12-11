@@ -49,17 +49,57 @@ canvas{
   margin: 0 auto;
   // background-color: rgb(193, 212, 228)
 }
+.alert-signup{
+  color:rgb(255, 123, 0);
+  width: 25rem;
+  height: 2.1875rem;
+  line-height: 2.1875rem;
+  background-color: rgba(255, 213, 0, 0.42);
+  border-radius: 5px;
+  margin: 1.25rem auto;
+  text-align: center;
+}
+.alert-login{
+  color:rgb(0, 162, 62);
+  background-color: rgba(0, 255, 30, 0.347);
+  border-radius: 5px;
+  margin: 1.25rem auto;
+  width: 25rem;
+  height: 2.1875rem;
+  line-height: 2.1875rem;
+  text-align: center;
+}
+.alert-danger{
+  background-color: rgb(242, 207, 207);
+  font-size: .8125rem;
+  border-radius: 5px;
+  text-align: center;
+  width: 25rem;
+  color: rgb(249, 35, 35);
+  margin: 20px auto;
+}
+.alert-danger{
+  background-color: rgb(242, 207, 207);
+  font-size: .8125rem;
+  border-radius: 5px;
+  text-align: center;
+  width: 25rem;
+  color: rgb(249, 35, 35);
+  margin: 20px auto;
+}
 
 
 // form
 #error_explanation {
-  color: rgb(251, 49, 49);
+  background-color: rgba(251, 49, 49, 0.288);
+  border-radius: 5px;
   ul {
     color: red;
     margin: 0 0 30px 0;
   }
    ul li{
     font-size: .8125rem;
+    padding: 5px;
   }
 }
 
@@ -72,20 +112,8 @@ canvas{
   }
 }
 
-/* error message */
 
 
-.alert-danger{
-  background-color: rgb(242, 207, 207);
-  font-size: .8125rem;
-  border-radius: 5px;
-  height: 2.1875rem;
-  line-height: 2.1875rem;
-  text-align: center;
-  width: 25rem;
-  color: rgb(249, 35, 35);
-  margin: 20px auto;
-}
 /* Users index */
 
 .users {

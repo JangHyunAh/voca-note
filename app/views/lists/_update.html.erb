@@ -16,8 +16,8 @@
               </div>
             </div>
             <div>
-            <%= f.radio_button :answer_number, :"1_#{choices[0].id}" %>
-            <%= f.label :answer_number,"#{choices[0].mean}", value:"1_#{choices[0].id}" %>
+            <%= f.radio_button :answer_number, :"1_#{choices[0].id}", {:checked => true}  %>
+            <%= f.label :answer_number,"#{choices[0].mean}", value:"1_#{choices[0].id}"%>
             </div>
 
             <div>

@@ -1,3 +1,6 @@
+  <% flash.each do |message_type, message| %>
+        <div class="alert-login alert-<%= message_type %>"><%= message %></div>
+  <% end %>
 <div class="form-wrap" id = "small-page">
   <h1 class = "name1" >Log in</h1>
 

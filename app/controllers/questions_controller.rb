@@ -14,6 +14,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do |csv|
+        @questions = Question.all
         send_posts_csv(@questions)
       end
     end
