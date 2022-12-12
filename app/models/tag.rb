@@ -4,11 +4,11 @@ class Tag < ApplicationRecord
   belongs_to :user, optional: true
   validates :name, uniqueness: true, presence: true
   
-  def self.looks(search, word)
-    p 111111111
-    p search
-    p word
-    @title = Question.where("title LIKE?","%#{word}%")
-  end
+  # def self.looks(search, word)
+  #   p 111111111
+  #   p search
+  #   p word
+  #   @title = Question.where("title LIKE?","%#{word}%")
+  # end
 
 end

@@ -1,6 +1,7 @@
 require 'csv'
 class QuestionsController < ApplicationController
   before_action :set_questions, only: [:edit, :update, :destroy, :search]
+  before_action :correct_user, only: [:edit, :destroy]
 
   def index
     @tags = Tag.all.order('id ASC')
@@ -31,8 +32,10 @@ class QuestionsController < ApplicationController
     @question.image.attach(params[:question][:image])
     
     if @question.save
+      flash[:alert] = "Word is saved"
       redirect_to questions_path
     else
+      flash[:alert] = "Word is not saved"
       render 'new', status: :unprocessable_entity
     end
   end
@@ -77,6 +80,11 @@ class QuestionsController < ApplicationController
     end
     send_data(csv_data, filename: "投稿一覧.csv")
   end
+
+  def correct_user
+    redirect_to(questions_path, status: :see_other) unless @question.user.id == current_user.id
+  end
+
 
 end
 

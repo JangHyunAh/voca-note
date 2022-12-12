@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   # before_action :logged_in_user,  only: [:index, :edit, :update]
   before_action :set_tag,         only: [:edit, :update, :destroy, :search]
-  # before_action :correct_user,    only: [:edit, :destroy]
+  before_action :correct_user,    only: [:edit, :destroy]
   
   def index
     @tags = Tag.all.order('id ASC')
@@ -18,9 +18,10 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
+      flash[:alert] = "Tag is saved"
       redirect_to tags_path
     else
-      flash[:info] = "It's not saved"
+      flash[:alert] = "Tag is not saved"
       render 'new', status: :unprocessable_entity
     end
    
@@ -50,8 +51,8 @@ class TagsController < ApplicationController
     params.require(:tag).permit(:name).merge(user_id: session[:user_id])
   end
 
-  # def correct_user
-  #   redirect_to(tags_path, status: :see_other) unless @tag.user.id == current_user.id
-  # end
+  def correct_user
+    redirect_to(tags_path, status: :see_other) unless @tag.user.id == current_user.id
+  end
 
 end

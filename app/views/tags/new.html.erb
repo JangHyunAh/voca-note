@@ -2,8 +2,9 @@
   <div class="in-form">
     <h1 class="name1">New Tag</h1>
     <%= form_with model: @tag do |f| %>
-    <%= f.text_field :name, placeholder: "tag", class: "field" %>
-    <%= f.submit "Create", id: "btn" %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.text_field :name, placeholder: "tag", class: "field" %>
+      <%= f.submit "Create", id: "btn" %>
     <% end %>
     <%= link_to "Go to Tag List", tags_path, id: "index-btn" %>
   </div>

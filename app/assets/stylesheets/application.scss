@@ -70,7 +70,7 @@ canvas{
   text-align: center;
 }
 .alert-danger{
-  background-color: rgb(242, 207, 207);
+  background-color: rgba(255, 104, 104, 0.288);
   font-size: .8125rem;
   border-radius: 5px;
   text-align: center;
@@ -78,8 +78,17 @@ canvas{
   color: rgb(249, 35, 35);
   margin: 20px auto;
 }
-.alert-danger{
-  background-color: rgb(242, 207, 207);
+.alert-save{
+  background-color: rgba(104, 159, 255, 0.288);
+  font-size: .8125rem;
+  border-radius: 5px;
+  text-align: center;
+  width: 25rem;
+  color: rgb(35, 64, 249);
+  margin: 20px auto;
+}
+.alert-tag{
+  background-color: rgba(255, 104, 104, 0.288);
   font-size: .8125rem;
   border-radius: 5px;
   text-align: center;
@@ -91,7 +100,7 @@ canvas{
 
 // form
 #error_explanation {
-  background-color: rgba(251, 49, 49, 0.288);
+  background-color: rgba(255, 104, 104, 0.288);
   border-radius: 5px;
   ul {
     color: red;
